@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { supabase } from '@/lib/supabaseClient'
 import { onMounted, ref } from 'vue'
+import type { Tables } from '../../../database/types'
 
-const projects = ref<any[] | null>(null)
+const projects = ref<Array<Tables<'projects'>> | null>(null)
 
 onMounted(async () => {
   const { data, error } = await supabase.from('projects').select()

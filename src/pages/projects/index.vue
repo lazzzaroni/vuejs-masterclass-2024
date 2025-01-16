@@ -2,7 +2,7 @@
 import { supabase } from '@/lib/supabaseClient'
 import { onMounted, ref } from 'vue'
 
-const projects = ref()
+const projects = ref<any[] | null>(null)
 
 onMounted(async () => {
   const { data, error } = await supabase.from('projects').select()
@@ -17,6 +17,10 @@ onMounted(async () => {
   <div>
     <h1>Projects Page</h1>
     <RouterLink to="/">Home</RouterLink>
-    <pre>{{ projects }}</pre>
+    <ul>
+      <li v-for="project in projects" :key="project.id">
+        {{ project.name }}
+      </li>
+    </ul>
   </div>
 </template>

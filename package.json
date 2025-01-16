@@ -14,13 +14,13 @@
     "supabase:init": "supabase init",
     "supabase:login": "supabase login",
     "supabase:link": "supabase link --project-ref \"$SUPABASE_PROJECT_ID\"",
-    "supabase:types": "npx supabase gen types typescript --project-id fmbmrtwfydtkesglzpvu --schema public > database/types.ts",
-    "db:migrate:new": "supabase migration new projects-schema",
+    "supabase:types": "npx supabase gen types typescript --project-id \"$SUPABASE_PROJECT_ID\" --schema public > database/types.ts",
+    "db:migrate:new": "supabase migration new",
     "db:reset": "supabase db reset --linked",
     "db:seed": "node --env-file=.env database/seed.js"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.47.14",
+    "@supabase/supabase-js": "^2.47.15",
     "pinia": "^2.3.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
@@ -28,7 +28,7 @@
   "devDependencies": {
     "@faker-js/faker": "^9.4.0",
     "@tsconfig/node22": "^22.0.0",
-    "@types/node": "^22.10.6",
+    "@types/node": "^22.10.7",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/eslint-config-prettier": "^10.1.0",
     "@vue/eslint-config-typescript": "^14.3.0",

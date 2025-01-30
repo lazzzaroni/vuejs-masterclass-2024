@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router'
 
-const route = useRoute('/projects/[id]')
+const route = useRoute('/tasks/[id]')
 </script>
 
 <template>
   <div>
-    <h1>Project {{ route.params?.id }}</h1>
+    <h1>Task {{ route.params?.id }}</h1>
   </div>
 </template>

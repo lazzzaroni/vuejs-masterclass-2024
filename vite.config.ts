@@ -1,5 +1,6 @@
 import { fileURLToPath, URL } from 'node:url'
 import VueRouter from 'unplugin-vue-router/vite'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
 import AutoImport from 'unplugin-auto-import/vite'
 import tailwindcss from '@tailwindcss/vite'
 
@@ -14,7 +15,7 @@ export default defineConfig({
     VueRouter(),
     AutoImport({
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
-      imports: ['vue', 'vue-router'],
+      imports: ['vue', VueRouterAutoImports],
       dts: true,
       viteOptimizeDeps: true,
     }),

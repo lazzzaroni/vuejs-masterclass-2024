@@ -23,24 +23,20 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Table>
+  <Table v-if="project">
     <TableRow>
       <TableHead> Name </TableHead>
-      <TableCell> Lorem ipsum dolor sit amet. </TableCell>
+      <TableCell>{{ project.name }}</TableCell>
     </TableRow>
     <TableRow>
       <TableHead> Description </TableHead>
       <TableCell>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad iure qui tempora ex nihil, ab
-        reprehenderit dolorem sunt veritatis perferendis? Repudiandae quis velit quasi ab natus quia
-        ratione voluptas deserunt labore sed distinctio nam fuga fugit vero voluptates placeat
-        aperiam, saepe excepturi eos harum consectetur doloremque perspiciatis nesciunt! Incidunt,
-        modi.
+        {{ project.description }}
       </TableCell>
     </TableRow>
     <TableRow>
       <TableHead> Status </TableHead>
-      <TableCell>In progress</TableCell>
+      <TableCell>{{ project.status }}</TableCell>
     </TableRow>
     <TableRow>
       <TableHead> Collaborators </TableHead>
@@ -48,7 +44,7 @@ onMounted(async () => {
         <div class="flex">
           <Avatar
             class="border-primary -mr-4 border transition-transform hover:scale-110"
-            v-for="n in 5"
+            v-for="n in project.collaborators"
             :key="n"
           >
             <RouterLink class="flex h-full w-full items-center justify-center" to="">
@@ -61,7 +57,7 @@ onMounted(async () => {
     </TableRow>
   </Table>
 
-  <section class="mt-10 flex grow flex-col justify-between gap-5 md:flex-row">
+  <section v-if="project" class="mt-10 flex grow flex-col justify-between gap-5 md:flex-row">
     <div class="flex-1">
       <h2>Tasks</h2>
       <div class="table-container">
@@ -74,10 +70,10 @@ onMounted(async () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow v-for="n in 5" :key="n">
-              <TableCell> Lorem ipsum dolor sit amet. </TableCell>
-              <TableCell> In progress </TableCell>
-              <TableCell> 22/08/2024 </TableCell>
+            <TableRow v-for="task in project.tasks" :key="task.id">
+              <TableCell> {{ task.name }} </TableCell>
+              <TableCell> {{ task.status }}</TableCell>
+              <TableCell> {{ task.due_date }}</TableCell>
             </TableRow>
           </TableBody>
         </Table>

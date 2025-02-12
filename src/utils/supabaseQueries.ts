@@ -21,6 +21,7 @@ export const projectQuery = (slug: string) =>
         tasks (
           id,
           name,
+          description,
           status,
           due_date
         )

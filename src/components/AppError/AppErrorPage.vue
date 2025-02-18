@@ -1,8 +1,12 @@
 <script setup lang="ts">
 const router = useRouter()
 
-router.afterEach(() => {
-  useErrorStore().activeError = false
+const clearError = router.afterEach(() => {
+  useErrorStore().clearError()
+})
+
+onBeforeUnmount(() => {
+  clearError()
 })
 </script>
 

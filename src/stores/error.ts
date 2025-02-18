@@ -5,5 +5,9 @@ export const useErrorStore = defineStore('error-store', () => {
     activeError.value = true
   }
 
-  return { activeError, setError }
+  const clearError = () => {
+    activeError.value = false
+  }
+
+  return { activeError, setError, clearError }
 })

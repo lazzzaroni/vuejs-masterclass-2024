@@ -1,3 +1,11 @@
+<script setup lang="ts">
+const router = useRouter()
+
+router.afterEach(() => {
+  useErrorStore().activeError = false
+})
+</script>
+
 <template>
   <section class="error">
     <div>
@@ -15,7 +23,7 @@
 </template>
 
 <style scoped>
-@reference "../assets/index.css";
+@reference "../../assets/index.css";
 
 .error {
   @apply mx-auto -mt-20 flex min-h-[90vh] flex-1 items-center justify-center p-10 text-center;
